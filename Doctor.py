@@ -1,7 +1,14 @@
 class Doctor:
-    def __init__(self, first="", last="", spec="", area="", score=0.0):
-        self.first_name = first
-        self.last_name = last
-        self.specialty = spec
+    def __init__(self, name="", specialty="", area="", rating=0.0):
+        self.name = name
+        self.specialty = specialty
         self.area = area
-        self.review_score = score
+        self.rating = rating
+
+def initializeDoctors():
+    return [
+        Doctor(name="Ricky Kuang", specialty="Neurology", area="Alhambra, CA", rating=5),
+        Doctor(name="John Doe", specialty="Dermatology", area="Alhambra, CA", rating=3),
+        Doctor(name="Bugs Bunny", specialty="Cardiology", area="San Francisco, CA", rating=2),
+        Doctor(name="Mickey Mouse", specialty="Neurology", area="Burbank, CA", rating=4)
+    ]
