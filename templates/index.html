@@ -8,10 +8,44 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">    
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+
+    <title>Similar Doctors</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <div class="header text-center">
+      <h1>Similar Doctors</h1>
+      <p>This project is a take-home test from Practice Fusion. It is the first step of their application 
+        process for their Software Engineer Web Developer internship program.</p>
+    </div>
+
+    <div class="container doctors">
+      {% for doctor in doctors %}
+      <div class="doctor">
+        <div class="row">
+          {{ doctor.name }}
+          <div class="ml-auto">
+            Rating: 
+            {% for i in range(5) %}
+              {% if i < doctor.rating %}
+                <span class="fas fa-star"></span>
+              {% else %}
+                <span class="far fa-star"></span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="row">
+          {{ doctor.specialty }}
+          <div class="ml-auto">
+            {{ doctor.area }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
