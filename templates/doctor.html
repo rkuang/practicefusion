@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container doctors">
+{% for doctor in doctors %}
+<a href="/{{loop.index-1}}">
+    <div class="doctor">
+    <div class="row">
+        {{ doctor.name }}
+        <div class="ml-auto">
+        Rating: 
+        {% for i in range(5) %}
+            {% if i < doctor.rating %}
+            <span class="fas fa-star"></span>
+            {% else %}
+            <span class="far fa-star"></span>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        {{ doctor.specialty }}
+        <div class="ml-auto">
+        {{ doctor.area }}
+        </div>
+    </div>
+    </div>
+</a>
+{% endfor %}
+</div>
+{% endblock %}
