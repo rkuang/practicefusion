@@ -8,8 +8,21 @@ body {
     margin: auto;
 }
 
+.footer {
+    padding-bottom: 30px;
+}
+
 .container {
     width: 40%;
+}
+
+
+.doctors a:hover{
+    text-decoration: none;
+}
+
+a .doctor {
+    color: black;
 }
 
 .doctor {
