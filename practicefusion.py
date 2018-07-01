@@ -12,13 +12,13 @@ def index():
 @app.route('/<doctor>')
 def doctor(doctor):
     doctor = doctors[int(doctor)]
-    special_docs = []
+    special_docs = [doctor]
     for doc in doctors:
-        if doc.specialty == doctor.specialty:
+        if doc.specialty == doctor.specialty and doc != doctor:
             special_docs.append(doc)
 
     special_docs.sort(key=lambda x: x.rating, reverse=True)
-    return render_template('doctor.html', doctor=doctor, doctors=special_docs)
+    return render_template('doctor.html', doctors=special_docs)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

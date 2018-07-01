@@ -2,30 +2,51 @@
 
 {% block content %}
 <div class="container doctors">
-{% for doctor in doctors %}
-<a href="/{{loop.index-1}}">
     <div class="doctor">
-    <div class="row">
-        {{ doctor.name }}
-        <div class="ml-auto">
-        Rating: 
-        {% for i in range(5) %}
-            {% if i < doctor.rating %}
-            <span class="fas fa-star"></span>
-            {% else %}
-            <span class="far fa-star"></span>
-            {% endif %}
-        {% endfor %}
+        <div class="row">
+            {{ doctors[0].name }}
+            <div class="ml-auto">
+            Rating: 
+            {% for i in range(5) %}
+                {% if i < doctors[0].rating %}
+                <span class="fas fa-star"></span>
+                {% else %}
+                <span class="far fa-star"></span>
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            {{ doctors[0].specialty }}
+            <div class="ml-auto">
+            {{ doctors[0].area }}
+            </div>
         </div>
     </div>
-    <div class="row">
-        {{ doctor.specialty }}
-        <div class="ml-auto">
-        {{ doctor.area }}
+    <h4 class="text-center">Similar Doctors</h4>
+    <hr>
+    {% for doctor in doctors[1:] %}
+    <div class="doctor">
+        <div class="row">
+            {{ doctor.name }}
+            <div class="ml-auto">
+            Rating: 
+            {% for i in range(5) %}
+                {% if i < doctor.rating %}
+                <span class="fas fa-star"></span>
+                {% else %}
+                <span class="far fa-star"></span>
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            {{ doctor.specialty }}
+            <div class="ml-auto">
+            {{ doctor.area }}
+            </div>
         </div>
     </div>
-    </div>
-</a>
-{% endfor %}
+    {% endfor %}
 </div>
 {% endblock %}
